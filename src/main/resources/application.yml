@@ -1,0 +1,65 @@
+
+# ========================================
+# CONFIGURATION DE L'APPLICATION
+# ========================================
+spring:
+  application:
+    name: mobilite
+  profiles:
+    active: prod
+  # ========================================
+  # CONFIGURATION DE LA BASE DE DONNÉES
+  # ========================================
+  datasource:
+    url: jdbc:postgresql://${DB_URL:localhost}:${DB_PORT:5432}/${DB_NAME:mobilite}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:pnd0892}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 300000
+      max-lifetime: 600000
+      connection-timeout: 20000
+      validation-timeout: 5000
+      connection-test-query: SELECT 1
+      leak-detection-threshold: 60000
+  # ========================================
+  # CONFIGURATION JPA
+  # ========================================
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect  # ✅ 4 espaces
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        transaction.jta.platform: org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform
+
+
+
+# ========================================
+# CONFIGURATION JWT / SÉCURITÉ
+# ========================================
+jwt:
+  header: Authorization
+  prefix: "Bearer "
+  secret: a3f5c7d9e3b4f8a1c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7
+  access-token-expiration: 3600000
+  refresh-token-expiration: 86400000
+
+# ========================================
+# CONFIGURATION LOGGING
+# ========================================
+logging:
+  level:
+    root: INFO
+    com.techinnov.consulaire: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer: ERROR
+    org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration: ERROR  # Pour masquer l'avertissement open-in-view
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
