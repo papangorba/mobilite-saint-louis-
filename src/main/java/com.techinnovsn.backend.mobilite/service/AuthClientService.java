@@ -1,16 +1,18 @@
-package com.techinnovsn.service;
+package com.techinnovsn.backend.mobilite.service;
 
+
+import java.util.Optional;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.techinnovsn.dto.RegisterClientDto;
 import com.techinnovsn.entity.User;
 import com.techinnovsn.entity.enums.Role;
 import com.techinnovsn.repository.UserRepository;
 import com.techinnovsn.security.JwtUtils;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service

@@ -1,4 +1,4 @@
-package com.techinnovsn.security;
+package com.techinnovsn.backend.mobilite.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
