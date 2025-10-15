@@ -43,6 +43,7 @@ spring:
 # ========================================
 # CONFIGURATION JWT / SÉCURITÉ
 # ========================================
+
 jwt:
   header: Authorization
   prefix: "Bearer "

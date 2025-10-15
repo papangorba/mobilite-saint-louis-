@@ -1,30 +1,28 @@
 package com.techinnovsn.controller;
 
-import com.techinnovsn.security.JWTService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.techinnovsn.dto.RegisterClientDto;
+import com.techinnovsn.service.AuthClientService;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthClientService authService;
 
-    @Autowired
-    private JWTService jwtService;
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterClientDto dto) {
+        String token = authService.register(dto);
+        return ResponseEntity.ok().body("Inscription réussie. Token : " + token);
+    }
 
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(username, password)
-        );
-
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        return jwtService.generateToken(userDetails);
+    public ResponseEntity<?> login(@RequestParam String telephone) {
+        String token = authService.login(telephone);
+        return ResponseEntity.ok().body("Connexion réussie. Token : " + token);
     }
 }
