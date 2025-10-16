@@ -1,6 +1,6 @@
-package com.techinnovsn.repository;
+package com.techinnovsn.backend.mobilite.repository;
 
-import com.techinnovsn.entity.User;
+import com.techinnovsn.backend.mobilite.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

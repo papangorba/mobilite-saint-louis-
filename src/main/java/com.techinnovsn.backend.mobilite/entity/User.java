@@ -1,12 +1,12 @@
 
-package com.techinnovsn.entity;
+package com.techinnovsn.backend.mobilite.entity;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.techinnovsn.entity.enums.Role;
+import com.techinnovsn.backend.mobilite.entity.enums.Role;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,8 +39,14 @@ public class User  {
     @CreationTimestamp
     private LocalDateTime dateInscription;
 
+    @Column(unique = true)
+    private String numeroDePermis;
+
+    private String dateExpirationDuPermis;
+
     @Enumerated(EnumType.STRING)
     private Role role;
+
 
     private String password;
 

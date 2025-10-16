@@ -1,7 +1,8 @@
-package com.techinnovsn.controller;
+package com.techinnovsn.backend.mobilite.controller;
 
-import com.techinnovsn.dto.RegisterClientDto;
-import com.techinnovsn.service.AuthClientService;
+import com.techinnovsn.backend.mobilite.dto.LoginClientRequestDto;
+import com.techinnovsn.backend.mobilite.dto.RegisterClientDto;
+import com.techinnovsn.backend.mobilite.service.AuthClientService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestParam String telephone) {
-        String token = authService.login(telephone);
+    public ResponseEntity<?> login(@RequestBody LoginClientRequestDto request) {
+        String token = authService.login(request.getTelephone());
         return ResponseEntity.ok().body("Connexion réussie. Token : " + token);
     }
+
 }

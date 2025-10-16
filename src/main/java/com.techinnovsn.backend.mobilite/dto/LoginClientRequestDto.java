@@ -4,9 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class RegisterClientDto {
-
+public class LoginClientRequestDto {
     @NotBlank(message = "Veuillez saisir votre numéro de téléphone")
     private String telephone;
-
 }

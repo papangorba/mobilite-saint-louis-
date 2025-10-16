@@ -47,7 +47,7 @@ spring:
 jwt:
   header: Authorization
   prefix: "Bearer "
-  secret: a3f5c7d9e3b4f8a1c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7
+  secret: 9d5d0000ced4ba0959fb6efb6853aa5e4e2d3408a624ee236bfa62baffdf487eef96b29127ee533d110efd3c9a5d6bd043e2e6f69bfd66b450b45f9d3cfa1d5b
   access-token-expiration: 3600000
   refresh-token-expiration: 86400000
 

@@ -1,7 +1,8 @@
-package com.techinnovsn.security;
+package com.techinnovsn.backend.mobilite.security;
 
-import com.techinnovsn.entity.User;
-import com.techinnovsn.repository.UserRepository;
+import com.techinnovsn.backend.mobilite.security.JwtUtils;
+import com.techinnovsn.backend.mobilite.entity.User;
+import com.techinnovsn.backend.mobilite.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

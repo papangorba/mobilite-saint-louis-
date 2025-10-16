@@ -1,7 +1,7 @@
-package com.techinnovsn.mapper;
+package com.techinnovsn.backend.mobilite.mapper;
 
-import com.techinnovsn.dto.RegisterClientDto;
-import com.techinnovsn.entity.User;
+import com.techinnovsn.backend.mobilite.dto.RegisterClientDto;
+import com.techinnovsn.backend.mobilite.entity.User;
 import org.springframework.stereotype.Component;
 
 @Component

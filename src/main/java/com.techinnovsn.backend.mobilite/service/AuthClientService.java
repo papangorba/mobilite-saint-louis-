@@ -3,14 +3,15 @@ package com.techinnovsn.backend.mobilite.service;
 
 import java.util.Optional;
 
+import com.techinnovsn.backend.mobilite.entity.enums.Role;
+import com.techinnovsn.backend.mobilite.security.JwtUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.techinnovsn.backend.mobilite.dto.RegisterClientDto;
+import com.techinnovsn.backend.mobilite.entity.User;
 
-import com.techinnovsn.dto.RegisterClientDto;
-import com.techinnovsn.entity.User;
-import com.techinnovsn.entity.enums.Role;
-import com.techinnovsn.repository.UserRepository;
-import com.techinnovsn.security.JwtUtils;
+import com.techinnovsn.backend.mobilite.repository.UserRepository;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,14 +35,15 @@ public class AuthClientService {
         return jwtUtils.generateToken(user.getTelephone());
     }
 
-    public String login(String  telephone) {
-        Optional<User> userOpt = userRepository.findByTelephone(telephone);
+    public String login(String telephone) {
+        Optional<User> userOpt = userRepository.findByTelephone(telephone.trim());
 
         if (userOpt.isEmpty()) {
-            throw new RuntimeException("Utilisateur non trouvé");
+            throw new RuntimeException("Utilisateur non trouvé pour le numéro : " + telephone);
         }
 
-        return jwtUtils.generateToken(userOpt.get().getTelephone());
+        User user = userOpt.get();
+        return jwtUtils.generateToken(user.getTelephone());
     }
 
 
